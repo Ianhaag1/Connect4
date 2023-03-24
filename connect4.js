@@ -48,17 +48,16 @@ function makeHtmlBoard() {
 
 // this loops through the function cell in the collom x. it checks each cell is empty. if none of the cells are empty then it will return null.
 function findSpotForCol(x) {
-for(let y = HEIGHT-1; y >= 0; y--){
-if(!board[y][x]){
-return y;
-}
-}
-return null;
-}
-
+    for(let y = HEIGHT-1; y >= 0; y--){
+    if(!board[y][x]){
+    return y;
+    }
+    }
+    return null;
+    }
 
 function placeInTable(y, x) {
- const piece = document.createElement('div'); //this creates the piece elemt in HTML
+ const piece = document.createElement('div'); //this creates the piece element in HTML
  piece.classList.add('piece') // This adds the class to the element 
  piece.style.backgroundColor = currPlayer === 1 ? 'red' : 'blue'; // this add colors to the pieces depending on the different players.
  const cell = document.getElementById(`${y}-${x}`);
@@ -93,7 +92,7 @@ function handleClick(evt) {
 
   // check for win
   if (checkForWin()) {
-    return endGame(`Player ${currPlayer} won!`);
+    return endGame(` Congrats! Player ${currPlayer} won!`);
   }
 
   // check for tie
@@ -139,6 +138,24 @@ function checkForWin() {
     }
   }
 }
+function resetBoard() {
+    board = []; 
+    const htmlBoard = document.getElementById('board');
+    htmlBoard.innerHTML = ''; // this clears the HTML board
+    makeBoard(); // this creates a new board array
+    makeHtmlBoard(); // this creates the new HTML board for the game
+    currPlayer = 1; // resets first user to player 1
+  }
+
+
+// this add the reset button to the HTML page and allows the users to press it (I wanted to use this instead of having to make the <button> tag in HTML and linking it to Javascript)
+  const resetButton = document.createElement('button');
+resetButton.setAttribute('id', 'reset-button');
+resetButton.innerText = 'Reset Board';
+document.body.appendChild(resetButton);
+
+// this adds an event listener to reset button
+resetButton.addEventListener('click', resetBoard);
 
 makeBoard();
 makeHtmlBoard();
