@@ -48,12 +48,12 @@ function makeHtmlBoard() {
 
 // this loops through the function cell in the collom x. it checks each cell is empty. if none of the cells are empty then it will return null.
 function findSpotForCol(x) {
-  for(let y = HEIGHT; y >= 0; y--){
-    if(!board[y][x]){
-      return y;
-    }
-  }
-  return null;
+for(let y = HEIGHT-1; y >= 0; y--){
+if(!board[y][x]){
+return y;
+}
+}
+return null;
 }
 
 
