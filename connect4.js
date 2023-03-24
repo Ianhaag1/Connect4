@@ -9,19 +9,15 @@ const WIDTH = 7;
 const HEIGHT = 6;
 
 let currPlayer = 1; // active player: 1 or 2
-const board = []; 
+let board = []; 
 
 
 //this function creates the board and loops through the values until it hits the HEIGHT and WIDTH that is set as the CONST.
 function makeBoard() {
-  for (let i = 0; i < HEIGHT; i++) {
-    const row = [];
-    for (let j = 0; j < WIDTH; j++) {
-      row.push(null);
+    for (let y = 0; y < HEIGHT; y++) {
+      board.push(Array.from({ length: WIDTH }));
     }
-    board.push(row);
   }
-}
 
 function makeHtmlBoard() {
   const htmlBoard = document.getElementById('board');
@@ -107,10 +103,6 @@ function handleClick(evt) {
 
   // switch players
   currPlayer = currPlayer === 1 ? 2 : 1;
-  let playerDiv = document.querySelector(`.player${currPlayer}`);
-  playerDiv.classList.add('active');
-  playerDiv = document.querySelector(`.player${currPlayer === 1 ? 2 : 1}`);
-  playerDiv.classList.remove('active');
 }
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
 
