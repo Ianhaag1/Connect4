@@ -20,12 +20,6 @@ h2{
   font-family: 'Times New Roman', Times, serif;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 
 #board {
   margin: auto;
@@ -38,22 +32,22 @@ h2{
 }
 
 .piece {
-  margin: 5px;
-  width: 80%;
-  height: 80%;
-  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin: auto;
 }
 
-.player1 {
+.piece.red {
   background-color: red;
 }
 
-.player2 {
+.piece.blue {
   background-color: blue;
 }
 
 #column-top td {
-  border: dashed 1px antiquewhite;
+  border: dashed 1px white;
 }
 
 #column-top td:hover {
