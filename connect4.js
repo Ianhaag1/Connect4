@@ -64,7 +64,7 @@ function findSpotForCol(x) {
 function placeInTable(y, x) {
  const piece = document.createElement('div'); //this creates the piece elemt in HTML
  piece.classList.add('piece') // This adds the class to the element 
- piece.style.backGroundcolor = currPlayer === 1 ? 'red' : 'blue'; // this add colors to the pieces depending on the different players.
+ piece.style.backgroundColor = currPlayer === 1 ? 'red' : 'blue'; // this add colors to the pieces depending on the different players.
  const cell = document.getElementById(`${y}-${x}`);
  cell.append(piece); // this retrieves the elementId with the template literal, and then appends it to the piece in the cell.
 }
@@ -92,35 +92,26 @@ function handleClick(evt) {
   }
 
   // place piece in board and add to HTML table
-  board[y][x] = currPlayer
+  board[y][x] = currPlayer;
   placeInTable(y, x);
 
   // check for win
   if (checkForWin()) {
     return endGame(`Player ${currPlayer} won!`);
   }
-  function checkForTie() {
-    for (let x = 0; x < WIDTH; x++) {
-      for (let y = 0; y < HEIGHT; y++) {
-        if (!board[y][x]) {
-          // if any cell is empty, the game is not tied
-          return false;
-        }
-      }
-    }
-    // if we've made it through the entire board without finding an empty cell, the game is tied
-    return true;
+
+  // check for tie
+  if (board.every(row => row.every(cell => cell))) {
+    return endGame('Tie!');
   }
-  
-  // in handleClick function:
-  if (checkForTie()) {
-    endGame("Game tied!");
-    return;
-  }
+
   // switch players
   currPlayer = currPlayer === 1 ? 2 : 1;
+  let playerDiv = document.querySelector(`.player${currPlayer}`);
+  playerDiv.classList.add('active');
+  playerDiv = document.querySelector(`.player${currPlayer === 1 ? 2 : 1}`);
+  playerDiv.classList.remove('active');
 }
-
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
 
 function checkForWin() {
