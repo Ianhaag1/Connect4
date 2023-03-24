@@ -1,0 +1,72 @@
+
+body{
+  background-color: black;
+}
+
+
+h1{
+  color:white;
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 0;
+  text-decoration: underline;
+  font-family: fantasy;
+}
+
+h2{
+  color:white;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+
+/* game board table */
+
+/* by using .container im able to align the content in the middle of the screen instead of on the far left. I could have used the margins but I found this to be easier for me to understand.*/
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#board {
+  margin: auto;
+}
+
+#board td {
+  width: 75px;
+  height: 75px;
+  border: solid 1px #666;
+}
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+  margin: 5px;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%; /*this turns the pieces into circles.*/
+}
+
+.player1 {
+  background-color: red;
+}
+
+.player2 {
+  background-color: blue;
+}
+
+#column-top td {
+  border: dashed 1px antiquewhite;
+}
+
+#column-top td:hover {
+  background-color: green;
+}
